@@ -4,7 +4,7 @@ var studentData = [
 ];
 function displayTableData(){
     //creating a table here
-    let html = "<table border='1|1' class='table table-bordered'>";
+    let html = "<table border='1|1' class='table'>";
     setTimeout(() => {
         html+="<thead>";
         html+="<tr>";
@@ -27,7 +27,8 @@ function displayTableData(){
             html+="<td>"+studentData[i].age+"</td>";
             html+="<td>"+studentData[i].class+"</td>";
             html+="<td>"+studentData[i].country+"</td>";
-            html+="<td>"+`<button type="button" onclick='removeItem(${studentData[i].id})'>Remove<i class="fa fa-trash"  style="font-size:38px;"></i></button>`+"</td>";
+            html+="<td>"+`<button type="button" onclick='removeItem(${studentData[i].id})'>remove<i class="fa fa-trash"  style="font-size:38px;"></i></button>
+            <button type="button" onclick="editUser()">edit<i class="fa fa-edit" style="font-size:40px"; "margin-bottom:0";></i></button>` + "</td>";
             html+="</tr>";
 
         } 
