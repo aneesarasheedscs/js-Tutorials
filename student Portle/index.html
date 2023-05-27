@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portale</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+            <div>
+                <a href="website.html">Seek Coding</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="./table2.html" id="home">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><button class="loginbtn" onclick="login()">Login</button></li>
+                </ul>
+            </nav>
+        </div>
+        <!-- login and registration buttons -->
+        <div id="login-form" class="login-page">
+             <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" onclick="login2()" class="toggle-btn" >Log In</button>
+                    <button type="button" onclick="register()" class="toggle-btn" >Register</button>
+
+                </div>
+                <!-- login form -->
+                <form action="#register" id="login" class="input-group-login">
+                    <input type="text" class="input-field" placeholder="Email Id" required>
+                    <input type="password" id="password1" class="input-field" placeholder="Enter Password"  required> <i class="fa  fa-eye-slash" id="icon3" onclick="myFunction()"></i>
+                    <input type="checkbox" class="check-box"> <span>Remember Password</span>
+                    <button type="submit" class="submit-btn" onclick="next()">Log in</button>
+                </form>
+                <!-- registration form -->
+                <form action="" id="register" class="input-group-register">
+                    <input type="text" id="first" class="input-field" placeholder="First Name" required>
+                    <input type="text" id="last" class="input-field" placeholder="Last Name" required>
+                    <input type="email" class="input-field" placeholder="Email Id" id="emails" required>
+                    <input type="password" id="password2" class="input-field" placeholder="Enter Password"  required> <i id="icon" class="fa  fa-eye-slash" onclick="myFunction2()"></i>
+                    <input type="password" id="password3" class="input-field" placeholder="Confirm Password" required> <i id="icon2" class="fa  fa-eye-slash" onclick="myFunction3()" ></i>
+                    <input type="checkbox" class="check-box"><span>I agree the terms and conditions</span>
+                    <button type="submit" class="submit-btn" >Register</button>
+
+                </form>
+             </div>
+        </div>
+    </div>
+    
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+         //click the login button to see the login from
+         function  login(){
+            document.getElementById('login-form').style.display='block';
+            style="width:auto;";
+        }
+
+        var loginf = document.getElementById('login');
+        var registerr = document.getElementById('register');
+        var btn = document.getElementById('btn');
+        //with the eye icon user can see the password when he is login
+        function myFunction(){
+            var show  = document.querySelector('#password1');
+            if(show.type =='password'){
+                show.type='text';
+            }
+            else{
+                show.type = 'password';
+            }
+        }
+     //with the eye icon user can see the password when he is registering
+        function myFunction2(){
+            var show  = document.querySelector('#password2');
+            if(show.type =='password'){
+                show.type='text';
+            }
+            else{
+                show.type = 'password';
+            }
+        }
+        function myFunction3(){
+            var show  = document.querySelector('#password3');
+            if(show.type =='password'){
+                show.type='text';
+            }
+            else{
+                show.type = 'password';
+            }
+        }
+ 
+    //this function is for moving user to registration page
+        function register(){
+            loginf.style.left= '-400px';
+            registerr.style.left= '50px';
+            btn.style.left='110px';
+
+        }
+        // this function is for go back to the login page
+        function login2(){
+            loginf.style.left= '50px';
+            registerr.style.left= '450px';
+            btn.style.left='0px';
+        }
+        //this function is for login the user when he submit the form the page hides
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event){
+            if(event.target == modal){
+                   modal.style.display = 'none';
+            }
+        }
+        //this function validate input-fields that shouldn't be empty when go to the registration page
+        function next(){
+            
+            let input = document.querySelector('.input-field').value;
+            let password = document.querySelector('#password1').value;
+            if(input !== "" && password !== ""){
+                alert("You loged in successfuly");
+                register2();
+            }
+            else{
+                alert("invalid not logedin");
+            }
+        }
+
+        //this function do nothing but just toggle the buttons login and registration
+        function register2(){
+            loginf.style.left= '-400px';
+            registerr.style.left= '50px';
+            btn.style.left='110px';
+
+        }
+ 
+    // here is click event called on the submission of the form 
+     document.getElementById('register').addEventListener('submit', (e)=> {
+           e.preventDefault();
+           document.querySelector('#login-form').style.display = "none";
+           //email and pasword validation
+            let input = document.querySelector('.input-field').value;
+            let input2 = document.querySelector('#emails').value;
+            let  password1 = document.querySelector('#password1').value;
+            let  password2 = document.querySelector('#password2').value;
+            let  password3 = document.querySelector('#password3').value;
+             if(input2 == input && password1 == password2 && password2 == password3){
+              
+               
+                const firstName = document.getElementById('first').value;
+                const lastName = document.getElementById("last").value;
+                console.log(firstName);
+                console.log(lastName);
+                //here is welcome message to user when he loged in successfully
+                alert(`Registeration Successful ` + firstName+ " " + lastName);
+                let ok = swal("Welcome! "+firstName ,  "Registeration Successful ", "success");
+                //go to the home page of the website
+                location.href = `table2.html?username=${firstName}`;
+            }
+            else{
+                alert("check email and password again");
+            }
+        
+     });
+     
+    
+    
+    </script>
+</body>
+</html>
